@@ -1,3 +1,4 @@
+
 // script.js - Version ULTIME avec TOUS les effets - TABLEAUX ALIEN COMPLETS + OPTIONS SPÉCIALES + MODE ANIMAL + MODE MIROIR
 // CORRIGÉ : Les transformations (Avatar/Alien/Animal) n'apparaissent que dans la PARTIE 2
 // CORRIGÉ : Gestion des deux cas Avatar (visage humain conservé OU transformation complète)
