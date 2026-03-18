@@ -11,8 +11,7 @@
 // CORRIGÉ : Ajout du MODE BÉBÉ ANIMAL CÂLIN
 // CORRIGÉ : Mode bébé animal - l'animal est DÉJÀ dans ses bras au début de la PARTIE 2
 // CORRIGÉ : Mode bébé animal - DÉSACTIVE les gestes finaux, finale spéciale avec l'animal
-// AJOUTÉ : MODE MIROIR - Transition "Main tendue" (la plus réaliste) - CORRIGÉ : Chronologie clarifiée (0-4s face caméra, 4-5s retournement, 5-6s contact)
-// CORRIGÉ : PARTIE 1 - La transition s'adapte au mode miroir (désactive le masquage par les mains)
+// AJOUTÉ : MODE MIROIR - Transition DIRECTE (flash lumineux) - OPTION 4
 
 console.log("🚀 Chargement de script.js...");
 
@@ -802,22 +801,26 @@ ${floatingTexts}`;
 
         // ===== TRANSITION ADAPTÉE SELON LE MODE =====
         if (this.userData.mirrorMode.enabled) {
-            // Mode miroir - transition spéciale
+            // Mode miroir - transition DIRECTE (OPTION 4)
             part1Text += `
 
-🪞 TRANSITION MIROIR (dernière seconde) :
-- À la dernière seconde, elle COMMENCE À SE RETOURNER VERS LE MIROIR
-- Mouvement LENT et SENSUEL de rotation du corps
-- Son reflet fait EXACTEMENT le même mouvement (il se retourne aussi)
-- Elle tend la main vers son reflet, LEURS DOIGTS SE TOUCHENT
-- Elle TIRE son reflet vers elle
-- Le clone commence à SORTIR du miroir
-- SA MAIN SORT D'ABORD, puis son bras, son épaule, sa tête
-- FIN PARTIE 1 : le clone est À MOITIÉ SORTI, main dans la main
+🪞 TRANSITION MIROIR DIRECTE (dernière seconde) :
+
+ÉTAPE 1 (5.0s) : Elle se RETOURNE vers le miroir (mouvement lent)
+ÉTAPE 2 (5.3s) : Elle POSE SA MAIN À PLAT sur le miroir
+ÉTAPE 3 (5.5s) : FLASH DE LUMIÈRE BLANCHE (très bref, 0.5 seconde)
+ÉTAPE 4 (6.0s) : FIN PARTIE 1 - Écran blanc
+
+⚠️ CONSIGNES SIMPLES :
+- PAS de coupure brutale
+- PAS d'apparition magique du clone
+- Le flash est un simple effet de lumière blanche
+- La transition doit être FLUIDE
 
 IMPORTANT - PRÉPARATION POUR LA PARTIE 2 :
-- Pendant que cette transition a lieu, elle aura le temps de SE CHANGER COMPLÈTEMENT
-- La transformation (nouvelle tenue, nouveaux cheveux, nouveau maquillage, effets) aura lieu HORS CAMÉRA
+- Pendant ce flash blanc, elle a le temps de SE CHANGER COMPLÈTEMENT
+- Son clone apparaît à côté d'elle pendant le flash
+- La transformation a lieu HORS CAMÉRA
 - La PARTIE 2 commencera avec le résultat FINAL déjà visible`;
         } else {
             // Mode normal - transition avec les mains
@@ -986,12 +989,11 @@ ${positions === 'variees' ?
         return babyText;
     }
 
-    // ===== MODE MIROIR (CORRIGÉ - CHRONOLOGIE CLAIRE) =====
+    // ===== MODE MIROIR (CORRIGÉ - TRANSITION DIRECTE OPTION 4) =====
     generateMirrorMode() {
         if (!document.getElementById('enableMirrorMode')?.checked) return '';
         
         const mirrorType = document.getElementById('mirrorType')?.value || 'classique';
-        const transitionType = document.getElementById('mirrorTransition')?.value || 'main_tendue';
         const duoStyle = document.getElementById('mirrorDuoStyle')?.value || 'synchronise';
         const poseFinale = document.getElementById('mirrorPoseFinale')?.value || 'cote_a_cote';
         
@@ -1007,36 +1009,14 @@ ${positions === 'variees' ?
 🎯 INSTRUCTION PRIORITAIRE - SORTIE RÉALISTE DU MIROIR 🎯
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🪞 SITUATION DE BASE (PARTIE 1 - SECONDES 0-4) :
+🪞 SITUATION DE BASE (PARTIE 1) :
 - L'image de référence montre : ELLE FACE CAMÉRA, MIROIR DERRIÈRE, REFLET DE SON DOS VISIBLE
-- Cette configuration est MAINTENUE pendant les 4 PREMIÈRES SECONDES de la PARTIE 1
-- De 0s à 4s : Elle danse FACE CAMÉRA (son visage visible), son REFLET dans le miroir l'imite
+- Elle danse FACE CAMÉRA (son visage visible), son REFLET dans le miroir l'imite
 - Elle ALTERNE les regards : CAMÉRA (séduction) / REFLET (complicité)
 - Le REFLET fait EXACTEMENT les mêmes mouvements qu'elle (miroir parfait)
 - Ambiance INTIME, CHAUDE, SENSUELLE - éclairage tamisé
 
-🔄 TRANSITION RÉALISTE - CHANGEMENT DE POSITION (SECONDES 4-6) :
-
-SECONDE 4-5 (CHANGEMENT DE POSITION) :
-- À 4 secondes, elle COMMENCE À SE RETOURNER VERS LE MIROIR
-- Mouvement LENT et SENSUEL de rotation du corps
-- Son reflet fait EXACTEMENT le même mouvement (il se retourne aussi)
-- À 5 secondes, elle est FACE AU MIROIR (dos à la caméra)
-- Elle regarde son reflet DROIT DANS LES YEUX
-
-SECONDE 5-6 (CONTACT AVEC LE REFLET) :
-- Elle TEND LENTEMENT LA MAIN vers le miroir, doigts ouverts
-- Regard INTENSE vers son reflet
-- Le REFLET tend aussi la main
-- LEURS DOIGTS SE TOUCHENT À LA SURFACE DU MIROIR
-- La surface du miroir est RÉELLE, dure, froide
-- Elle SOURIT, sentant le contact
-- Le reflet SOURIT AUSSI
-- Elle TIRE DOUCEMENT sa main vers elle
-- Le reflet est TIRÉ VERS L'AVANT
-- SA MAIN SORT D'ABORD du miroir (visible)
-- PUIS SON BRAS, SON ÉPAULE, SA TÊTE commencent à sortir
-- FIN PARTIE 1 : le clone est À MOITIÉ SORTI, main dans la main
+🔄 TRANSITION RÉALISTE - DÉJÀ EFFECTUÉE PENDANT LE FLASH :
 
 ✨ PARTIE 2 - LE DUO FACE CAMÉRA (6 secondes) :
 
@@ -1124,7 +1104,7 @@ ${poseFinale === 'cote_a_cote' ?
 
 💡 RAPPELS CRUCIAUX :
 - Les DEUX femmes sont STRICTEMENT IDENTIQUES (sauf option choisie)
-- La transition "MAIN TENDU" est RÉALISTE, sans effets magiques
+- La transition a eu lieu pendant le flash blanc (invisible)
 - Leurs expressions sont VIVANTES (micro-expressions, respiration)
 - La sensualité est PRÉSENTE mais DOUCE (complicité avant tout)
 - Leurs regards vers la caméra créent une connexion avec le spectateur
@@ -2112,11 +2092,9 @@ if (document.readyState === 'loading') {
     startApp();
 }
 
-// ... tout le reste du script est identique ...
-
 window.PromptGenerator = PromptGenerator;
 window.initCharacters = initCharacters;
 window.displayPrompt = displayPrompt;
 window.updateRecap = updateRecap;
 
-console.log("📦 script.js chargé avec TOUS les effets - MODE ANIMAL INTÉGRÉ - MAINS PEINTES CORRIGÉES - 5 TENUES POUR LES 2 RAPPEURS - NIVEAU ULTRA-RÉALISTE MAXIMUM (micro-expressions, yeux humides, respiration, mains) - MODE BÉBÉ ANIMAL CÂLIN AJOUTÉ - MODE MIROIR CORRIGÉ (face caméra avec miroir derrière) - TRANSITION ADAPTÉE AU MODE MIROIR");
+console.log("📦 script.js chargé avec TOUS les effets - MODE ANIMAL INTÉGRÉ - MAINS PEINTES CORRIGÉES - 5 TENUES POUR LES 2 RAPPEURS - NIVEAU ULTRA-RÉALISTE MAXIMUM (micro-expressions, yeux humides, respiration, mains) - MODE BÉBÉ ANIMAL CÂLIN AJOUTÉ - MODE MIROIR - OPTION 4 (TRANSITION DIRECTE)");
